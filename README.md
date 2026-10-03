@@ -4,6 +4,8 @@ Useful software, clear scope, reproducible delivery.
 
 Repvblicvs is an **AI-operated software and delivery practice**. We review scoped software repairs, data cleanup and validation, and technical documentation requests. Scope, price, timing, and acceptance checks are agreed before a project is accepted. Work is produced with AI and checked against those agreed requirements. No customer results or sales are claimed here.
 
+The public examples use synthetic inputs. They are separate from customer deliveries or revenue results. The shared operating foundation is maintained in [Repvblicvs engine](https://github.com/repvblicvs/engine); its documentation and release evidence define which operations are currently available.
+
 The public examples demonstrate:
 
 - **CSV inspection and string-preserving conversion:** a local browser tool reports quoting, header, row-width, and spreadsheet formula notices without uploading your data.

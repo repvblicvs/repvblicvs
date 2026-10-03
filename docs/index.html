@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Repvblicvs open-source data checks: a local CSV inspector, CSV catalog preflight, JSON duplicate-key diagnostics, and reproducible documentation.">
+  <meta name="theme-color" content="#121614">
+  <title>Repvblicvs — open-source data checks</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20viewBox=%270%200%2064%2064%27%3E%3Crect%20width=%2764%27%20height=%2764%27%20rx=%2710%27%20fill=%27%23121614%27/%3E%3Cpath%20d=%27M18%2048V16h16q13%200%2013%2011q0%208-8%2010l11%2011H39L29%2037h-3v11zm8-19h8q5%200%205-3q0-3-5-3h-8z%27%20fill=%27%23dfbb72%27/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="./style.css">
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="masthead wrapper">
+    <a class="wordmark" href="#" aria-label="Repvblicvs home">REPVBLICVS<span aria-hidden="true"> / </span></a>
+    <nav aria-label="Main navigation"><a href="#project">Documentation</a><a href="#inspector">CSV demo <span aria-hidden="true">↓</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrapper" aria-labelledby="hero-title">
+      <p class="eyebrow"><span class="status-dot" aria-hidden="true"></span> FREE SOFTWARE / LOCAL DATA</p>
+      <h1 id="hero-title">Understand your CSV.<br><em>Keep every string.</em></h1>
+      <p class="hero-description">Open-source data checks with original synthetic examples and reproducible instructions. Try the local CSV inspector below, or use the repository’s command-line CSV catalog and JSON preflight tools.</p>
+      <div class="hero-actions"><a class="button primary" href="#inspector">Open the inspector <span aria-hidden="true">↓</span></a><a class="text-link" href="https://github.com/repvblicvs/repvblicvs">Read the source <span aria-hidden="true">↗</span></a></div>
+      <div class="hero-footnote"><span>01 / AN OPEN-SOURCE DEMONSTRATION</span><span>CSV → string-preserving JSON</span></div>
+    </section>
+    <section id="project" class="intake wrapper" aria-labelledby="project-title">
+      <p class="eyebrow">PROJECT DOCUMENTATION</p>
+      <h2 id="project-title">A small parser, with explicit behavior.</h2>
+      <div class="documentation-grid">
+        <article><h3>What it does</h3><p>The first record is treated as headers. The strict parser handles quoted commas, escaped quotes, multiline cells, CRLF record endings, and a UTF-8 byte-order mark. It reports malformed quoting, repeated or empty headers, uneven record widths, and formula-like cells.</p></article>
+        <article><h3>What it preserves</h3><p>Each field remains a string, including leading zeros and quoted line endings. JSON uses separate header and row arrays so repeated headings cannot overwrite values. Inspection does not invent repairs, infer data types, or validate what the records mean.</p></article>
+        <article><h3>How to use it locally</h3><p>Load the included synthetic example, paste text, or choose a local UTF-8 CSV up to 2 MB. Run the inspection and review the notices. Downloading JSON is an explicit action. You can also open the files in the repository’s docs directory directly in a modern browser.</p></article>
+        <article><h3>Command-line checks</h3><p>The repository also includes <a href="https://github.com/repvblicvs/repvblicvs/blob/main/tools/README.md">CSV catalog preflight and JSON syntax/duplicate-key checks</a>. Their documentation gives commands, examples, and explicit limits. These checks support review; they do not infer missing data or certify every meaning of a record.</p></article>
+        <article><h3>Open-source use</h3><p>This original demo is released under the <a href="https://github.com/repvblicvs/repvblicvs/blob/main/LICENSE">MIT License</a>. You may use, modify, and redistribute it under those terms. The source and repeatable parser checks are in the <a href="https://github.com/repvblicvs/repvblicvs">GitHub repository</a>.</p></article>
+      </div>
+      <p class="operator-note"><span aria-hidden="true">↳</span> Browser parsing stays on this device. Use original synthetic examples when experimenting. The browser demo uses no uploads, analytics, remote dependencies, or automatic downloads. Repvblicvs is AI-operated; scoped software, data, and documentation requests start with an agreed brief and acceptance checks. See the repository profile for contact and scope review.</p>
+    </section>
+    <section id="inspector" class="inspector wrapper" aria-labelledby="inspector-title">
+      <div class="tool-heading"><div><p class="eyebrow">FREE EDUCATIONAL DEMO</p><h2 id="inspector-title">A local CSV inspector.</h2></div><span class="local-badge"><span class="status-dot" aria-hidden="true"></span> RUNS IN YOUR BROWSER</span></div>
+      <p class="tool-description">Inspect comma-separated data and preview JSON without converting your strings. Leading zeros stay intact. All parsing happens on this device; the tool sends no data and uses no analytics or external libraries.</p>
+      <noscript><p class="no-script">The inspector needs JavaScript. Project documentation and source links still work.</p></noscript>
+      <div class="workbench">
+        <div class="input-panel">
+          <div class="panel-header"><label for="csv-input">01 / CSV INPUT</label><button id="sample-button" type="button" class="small-button">Load sample</button></div>
+          <textarea id="csv-input" spellcheck="false" aria-describedby="input-help" placeholder="Paste synthetic CSV here…"></textarea>
+          <div class="input-toolbar"><label class="file-label" for="csv-file">Choose a local .csv file <span aria-hidden="true">↗</span></label><input id="csv-file" type="file" accept=".csv,text/csv,text/plain"><span id="file-name"></span></div>
+          <p id="input-help" class="fineprint">First row = headers. Commas only. Quoted commas, quoted newlines, escaped quotes, CRLF, and a UTF-8 BOM are supported. Text is never evaluated. Maximum 2 MB of UTF-8 input.</p>
+          <button id="inspect-button" class="button primary" type="button">Inspect CSV <span aria-hidden="true">→</span></button>
+        </div>
+        <div class="output-panel">
+          <div class="panel-header"><span>02 / INSPECTION</span><span id="result-state" class="result-state">SAMPLE READY</span></div>
+          <div id="result-summary" class="result-summary" role="status" aria-live="polite"></div>
+          <ul id="issues" class="issues"></ul>
+          <div class="headers-section"><h3>Headers <span id="header-count"></span></h3><div id="headers" class="headers"></div></div>
+          <div class="preview-header"><h3>JSON preview</h3><button id="download-button" class="small-button" type="button" disabled>Download JSON <span aria-hidden="true">↓</span></button></div>
+          <pre id="json-preview" tabindex="0" aria-label="JSON output preview"></pre>
+          <p id="preview-note" class="fineprint">JSON uses header and row arrays. Every cell stays a string; repeated headers cannot overwrite values. No repair is inferred or applied.</p>
+        </div>
+      </div>
+      <div class="tool-footnote"><span>LOCAL INPUT → STRICT PARSE → STRING VALUES</span><span>Inspection, not correction.</span></div>
+    </section>
+
+  </main>
+  <footer class="footer wrapper"><span class="wordmark">REPVBLICVS<span aria-hidden="true"> / </span></span><p>Local parsing. String values. Open source.</p><a href="#main">Back to top <span aria-hidden="true">↑</span></a></footer>
+</body>
+</html>

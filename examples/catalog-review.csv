@@ -1,0 +1,4 @@
+Title,URL handle,SKU,Price
+Demo mug,demo-mug,000017,$19.90
+Demo tray,demo-tray,000017,
+"=SUM(1,2)",demo-formula,000019,12.00

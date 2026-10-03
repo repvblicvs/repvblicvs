@@ -1,0 +1,9 @@
+{
+  "customer": {
+    "name": "Invented Example",
+    "preferences": {
+      "email_updates": true,
+      "email_updates": false
+    }
+  }
+}

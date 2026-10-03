@@ -1,0 +1,5 @@
+Title,URL handle,SKU,Price,Description,Option1 name,Option1 value
+"Studio mug, blue",studio-mug,000017,19.90,"Synthetic example only.
+Second description line with a ""quoted"" word.",Color,Blue
+,studio-mug,000018,19.90,,Color,Red
+Desk tray,desk-tray,000019,24.00,Synthetic example only.,Title,Default Title

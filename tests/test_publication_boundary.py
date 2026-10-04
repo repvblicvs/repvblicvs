@@ -13,6 +13,14 @@ spec.loader.exec_module(checker)
 
 
 class PublicationBoundary(unittest.TestCase):
+    def test_redacted_report_filename_is_blocked(self):
+        self.assertIn("private operating report filename", checker.issues(
+            "repvblicvs-acquisition-" + "update.md", "Redacted\n"))
+
+    def test_renamed_report_heading_is_blocked(self):
+        self.assertIn("private operating report", checker.issues(
+            "notes.md", "# Repvblicvs acquisition " + "status — private\nRedacted\n"))
+
     def test_private_report_is_not_public_prose(self):
         content = "# Session-Retro" + "spective\nInternal operating notes\n"
         self.assertIn("internal session report", checker.issues("notes.md", content))

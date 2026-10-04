@@ -17,10 +17,16 @@ RULES = [("absolute home path", re.compile(r"/(?:Users|home)/[A-Za-z0-9_.-]+")),
 RULES.extend([
     ("internal session report", re.compile(r"(?im)^\s{0,3}#\s*(?:session[- ]retro" + r"spective|team[- ]direction|executive[- ]handoff|internal[- ]coordination)\b")),
     ("internal operating details", re.compile(r"(?i)(?:the own" + r"er (?:also |subsequently )?authorized existing prepaid|real initial executive hand" + r"off cost was|root conversion oblig" + r"ations)")),
+    ("private operating report", re.compile(r"(?im)^\s{0,3}#{1,6}\s*(?:(?:Repvblicvs\s+)?acquisition[- ](?:up" + r"date|correction|status)|(?:Repvblicvs\s+)?finishing[- ]report|next[- ]session[- ]hand" + r"off)\b")),
 ])
+PRIVATE_REPORT_NAMES = ("session-retrospective", "team-direction", "handoff-meta",
+                        "acquisition-update", "finishing-report", "next-session-handoff")
 
 def issues(path: str, data: str) -> list[str]:
     found = []
+    name = Path(path.replace("\\", "/")).name.lower().replace("_", "-")
+    if any(part in name for part in PRIVATE_REPORT_NAMES):
+        found.append("private operating report filename")
     if any(p in {".private", "customer-work", ".env", ".claude", ".codex", ".runtime", "coordination", "inbox", "outbox", "logs"} for p in Path(path).parts) or Path(path).suffix.lower() in {".sqlite", ".sqlite3", ".db", ".pem", ".key"}:
         found.append("private file included")
     for label, pattern in RULES:
